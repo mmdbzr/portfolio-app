@@ -1,8 +1,12 @@
+@import url("https://fonts.googleapis.com/css2?family=Anton&display=swap");
 @import "tailwindcss";
-/* @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap"); */
 
 @theme {
   --background: #212121;
+  --color-primary: #00ef50;
+  --color-secondary: #dedede;
+  --color-gray-700: #b5b5b5;
+  --font-Anton: "Anton", sans-serif;
 }
 
 @theme inline {

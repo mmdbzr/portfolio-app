@@ -2,6 +2,7 @@
 
 import Navbar from "@/components/shared/NavBar";
 import StarfieldFramer from "../Starfield-animation";
+import ScrollTracker from "./ScrollTracker";
 
 export interface ShellProps {
   children: React.ReactNode;
@@ -11,8 +12,8 @@ export interface ShellProps {
 const Shell: React.FC<ShellProps> = ({ children, className }) => {
   return (
     <main className={className}>
-      <Navbar />
       <StarfieldFramer />
+      {/* <ScrollTracker /> */}
       {children}
     </main>
   );

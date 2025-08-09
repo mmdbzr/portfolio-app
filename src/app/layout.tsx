@@ -1,8 +1,7 @@
-"use client";
-import { useState, useEffect } from "react";
+import type React from "react";
 import "./globals.css";
-import Shell from "@/components/shared/Shell";
-import SplashScreen from "../components/shared/SplashScreen";
+
+import ClientLayout from "./ClientLayout";
 
 export default function RootLayout({
   children,
@@ -12,8 +11,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className="">
-        <SplashScreen className="absolute z-50" />
-        <Shell className="absolute w-full">{children}</Shell>
+        <ClientLayout>{children}</ClientLayout>
       </body>
     </html>
   );

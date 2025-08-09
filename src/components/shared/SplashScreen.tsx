@@ -4,9 +4,13 @@ import { useAnimate } from "framer-motion";
 
 export interface SplashScreenProps {
   className?: string;
+  onComplete?: () => void;
 }
 
-const SplashScreen: React.FC<SplashScreenProps> = ({ className }) => {
+const SplashScreen: React.FC<SplashScreenProps> = ({
+  className,
+  onComplete,
+}) => {
   const [textScope, animateText] = useAnimate();
   const [spanScope, animateSpans] = useAnimate();
   const firstName = "MOHAMMAD";
@@ -49,6 +53,9 @@ const SplashScreen: React.FC<SplashScreenProps> = ({ className }) => {
           }
         );
       }
+      setTimeout(() => {
+        onComplete?.();
+      }, 2000);
     };
 
     SplashAnimation();
@@ -60,7 +67,7 @@ const SplashScreen: React.FC<SplashScreenProps> = ({ className }) => {
     >
       {/* Text */}
       <div
-        className="absolute top-[50%] flex text-7xl font-bold text-white"
+        className="absolute top-[50%] flex text-5xl md:text-[100px] font-bold text-white"
         ref={textScope}
       >
         {firstName.split("").map((char, index) => (
