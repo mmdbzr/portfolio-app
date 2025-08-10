@@ -1,7 +1,6 @@
 "use client";
 import React, { useEffect } from "react";
 import { useAnimate } from "framer-motion";
-
 export interface SplashScreenProps {
   className?: string;
   onComplete?: () => void;
@@ -70,8 +69,8 @@ const SplashScreen: React.FC<SplashScreenProps> = ({
         className="absolute top-[50%] flex text-5xl md:text-[100px] font-bold text-white"
         ref={textScope}
       >
-        {firstName.split("").map((char, index) => (
-          <p key={index} className="opacity-0">
+        {firstName.split("").map((char) => (
+          <p key={crypto.randomUUID()} className="opacity-0">
             {char}
           </p>
         ))}
@@ -82,8 +81,11 @@ const SplashScreen: React.FC<SplashScreenProps> = ({
         className="grid grid-cols-10 min-w-full min-h-full absolute -z-10"
         ref={spanScope}
       >
-        {[...Array(10)].map((_, i) => (
-          <span key={i} className="w-full h-full bg-black"></span>
+        {[...Array(10)].map((_) => (
+          <span
+            key={crypto.randomUUID()}
+            className="w-full h-full bg-black"
+          ></span>
         ))}
       </div>
     </div>
