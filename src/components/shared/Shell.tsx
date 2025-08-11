@@ -1,6 +1,6 @@
 "use client";
 
-import Navbar from "@/components/shared/NavBar";
+import Navbar from "@/components/shared/Menu";
 import StarfieldFramer from "../Starfield-animation";
 import ScrollTracker from "./ScrollTracker";
 
