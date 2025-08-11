@@ -2,6 +2,7 @@ import type React from "react";
 import "./globals.css";
 
 import ClientLayout from "./ClientLayout";
+import Navbar from "@/components/shared/NavBar";
 
 export default function RootLayout({
   children,
@@ -11,6 +12,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className="">
+        <Navbar />
         <ClientLayout>{children}</ClientLayout>
       </body>
     </html>
