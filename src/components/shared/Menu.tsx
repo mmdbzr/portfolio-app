@@ -1,5 +1,7 @@
 "use client";
 import React, { useState } from "react";
+import Navbar from "./Navbar";
+import { AnimatePresence } from "framer-motion";
 
 export interface NavbarProps {
   className?: string;
@@ -10,9 +12,9 @@ const Menu: React.FC<NavbarProps> = ({ className }) => {
   const [isHover, setIsHover] = useState(false);
 
   return (
-    <div className="z-30 absolute right-0 top-0 ">
+    <div className="z-30 absolute right-0 top-0 h-screen ">
       <button
-        className=" w-9  h-5 flex flex-col space-y-7 fixed right-3 top-6 md:top-9 md:right-5"
+        className=" w-9  h-5 flex flex-col space-y-7 fixed right-3 top-6 md:top-9 md:right-5 z-20"
         onMouseEnter={() => {
           setIsHover(true);
         }}
@@ -42,9 +44,19 @@ const Menu: React.FC<NavbarProps> = ({ className }) => {
           }`}
         />
       </button>
-      {isActive && (
-        <div className="w-[332px] h-[100vh] bg-amber-500 inline-block"></div>
-      )}
+      <AnimatePresence mode="wait">
+        {isActive && (
+          <div>
+            <div
+              className="w-full h-screen bg-black opacity-50 fixed top-0 left-0 z-10"
+              onClick={() => {
+                setIsActive(false);
+              }}
+            />
+            <Navbar />
+          </div>
+        )}
+      </AnimatePresence>
     </div>
   );
 };
