@@ -18,13 +18,13 @@ export const menuSlide = {
 const Navbar: React.FC<NavbarProps> = ({ className }) => {
   return (
     <motion.div
-      className={`${className} fixed top-0 right-0 h-screen  flex flex-col items-center justify-center text- `}
+      className={`${className} fixed top-0 right-0 h-screen  flex flex-col items-center justify-center bg-[#212121] `}
       variants={menuSlide}
       initial="initial"
       animate="enter"
       exit="exit"
     >
-      <div className={`p-[100px] h-full`}> Navbar</div>
+      <div className={`p-[100px] h-full bg-inherit`}> Navbar</div>
       <Curve />
     </motion.div>
   );

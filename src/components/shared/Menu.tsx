@@ -48,7 +48,7 @@ const Menu: React.FC<NavbarProps> = ({ className }) => {
         {isActive && (
           <div>
             <div
-              className="w-full h-screen bg-black opacity-50 fixed top-0 left-0 z-10"
+              className="w-full h-screen bg-black opacity-40 fixed top-0 left-0 "
               onClick={() => {
                 setIsActive(false);
               }}

@@ -24,12 +24,13 @@ export default function Index() {
   };
 
   return (
-    <svg className="absolute top-0 left-[-100px] w-[100px] h-full -z-10">
+    <svg className="absolute top-0 left-[-100px] w-[100px] h-full -z-10 ">
       <motion.path
         variants={curve}
         initial="initial"
         animate="enter"
         exit="exit"
+        className={`fill-[#212121]`}
       ></motion.path>
     </svg>
   );
