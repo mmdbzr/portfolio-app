@@ -24,7 +24,11 @@ const Navbar: React.FC<NavbarProps> = ({ className }) => {
       animate="enter"
       exit="exit"
     >
-      <div className={`p-[100px] h-full bg-inherit`}> Navbar</div>
+      <div className={`p-[200px] h-full bg-inherit`}>
+        {" "}
+        Navbar
+        <div></div>
+      </div>
       <Curve />
     </motion.div>
   );
