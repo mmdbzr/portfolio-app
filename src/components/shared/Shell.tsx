@@ -1,8 +1,8 @@
 "use client";
 
 import Navbar from "@/components/shared/Menu";
-import StarfieldFramer from "../Starfield-animation";
-import ScrollTracker from "./ScrollTracker";
+import StarfieldFramer from "./Starfield-animation";
+import ScrollIndicator from "./ScrollIndicator";
 
 export interface ShellProps {
   children: React.ReactNode;
