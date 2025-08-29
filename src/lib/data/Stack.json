@@ -1,0 +1,50 @@
+{
+  "Frontend": {
+    "HTML": {
+      "name": "HTML",
+      "icon": "/Icons/html_1051277.png"
+    },
+    "CSS": {
+      "name": "CSS",
+      "icon": "/Icons/css-3_732190.png"
+    },
+    "JavaScript": {
+      "name": "JavaScript",
+      "icon": "/Icons/js_5968292.png"
+    },
+    "TypeScript": {
+      "name": "TypeScript",
+      "icon": "/Icons/typescript-icon-svgrepo-com.svg"
+    },
+    "React": {
+      "name": "React",
+      "icon": "/Icons/react-svgrepo-com.svg"
+    },
+    "NextJs": {
+      "name": "NextJs",
+      "icon": "/Icons/nextjs-fill-svgrepo-com.svg"
+    },
+    "tailwindcss": {
+      "name": "tailwindcss",
+      "icon": "/Icons/tailwind-css-2.svg"
+    },
+    "framer-motion": {
+      "name": "framer-motion",
+      "icon": "/Icons/framer-motion.svg"
+    },
+    "zustand": {
+      "name": "zustand",
+      "icon": "/Icons/zustand.svg"
+    }
+  },
+  "Tools": {
+    "Git": {
+      "name": "Git",
+      "icon": "/Icons/git-icon.svg"
+    },
+    "GitHub": {
+      "name": "GitHub",
+      "icon": "/Icons/css-3_732190.png"
+    }
+  }
+}
