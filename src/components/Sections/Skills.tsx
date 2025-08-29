@@ -26,14 +26,22 @@ const Skills: React.FC<props> = ({ className }) => {
     <motion.section
       ref={sectionRef}
       style={{ y, opacity }}
-      className={cn(className, "px-4 md:px-40 md:mt-32")}
+      className={cn(className, "px-4 md:px-40 md:mt-40")}
     >
-      <div className="container">
+      <p className=" text-secondary text-4xl md:text-3xl  ">My Stack </p>
+      <div className="container mt-10">
         <div className="gap-y-60 flex flex-col ">
           {Object.entries(Stack).map(([category, items], index) => (
-            <div
+            <motion.div
               className="flex flex-col md:flex-row md:gap-x-40 relative"
-              key={category}
+              key={crypto.randomUUID()}
+              initial={{ opacity: 0, y: 40 }}
+              animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 40 }}
+              transition={{
+                duration: 0.1,
+                ease: "easeOut",
+                delay: index * 0.4,
+              }}
             >
               <motion.p
                 initial={{ opacity: 0, y: 40 }}
@@ -43,7 +51,6 @@ const Skills: React.FC<props> = ({ className }) => {
                 transition={{
                   duration: 0.6,
                   ease: "easeOut",
-                  delay: index * 0.4,
                 }}
                 className="text-5xl font-Anton leading-none  uppercase text-secondary"
               >
@@ -53,7 +60,7 @@ const Skills: React.FC<props> = ({ className }) => {
               <div className="sm:col-span-7 flex gap-x-11 gap-y-9 flex-wrap absolute left-[42%] top-0 text-secondary !font-light">
                 {Object.values(items).map((item, i) => (
                   <motion.div
-                    key={item.name}
+                    key={crypto.randomUUID()}
                     initial={{ opacity: 0, y: 40 }}
                     animate={
                       isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 40 }
@@ -76,7 +83,7 @@ const Skills: React.FC<props> = ({ className }) => {
                   </motion.div>
                 ))}
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>
