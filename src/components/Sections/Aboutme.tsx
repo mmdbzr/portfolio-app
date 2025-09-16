@@ -6,7 +6,7 @@ export interface Props {
   className?: string;
 }
 
-const Aboutme: React.FC<Props> = ({ className }) => {
+const AboutMe: React.FC<Props> = ({ className }) => {
   const contaionRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
     target: contaionRef,
@@ -68,4 +68,4 @@ const Aboutme: React.FC<Props> = ({ className }) => {
   );
 };
 
-export default Aboutme;
+export default AboutMe;

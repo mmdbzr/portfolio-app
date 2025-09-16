@@ -3,6 +3,7 @@
 import Navbar from "@/components/shared/Menu";
 import StarfieldFramer from "./Starfield-animation";
 import ScrollIndicator from "./ScrollIndicator";
+import PixelBlast from "./PixelBlast";
 
 export interface ShellProps {
   children: React.ReactNode;
