@@ -1,23 +1,21 @@
 "use client";
 import React, { useState } from "react";
 import { motion } from "framer-motion";
-import Image from "next/image";
-import { ArrowDownTrayIcon } from "@heroicons/react/24/solid";
+
 export interface ButtonProps {
   className?: string;
 }
 
-const DownloadResumeButton: React.FC<ButtonProps> = ({ className }) => {
+const DownloadResumeButton = ({ className }: ButtonProps) => {
   const [isHover, setIsHover] = useState<boolean>(false);
-  console.log(isHover);
 
   return (
     <a
       className={` cursor-pointer h-12 px-8 bg-white flex w-32 justify-center items-center font-Anton relative overflow-clip rounded-3xl  ${className}`}
       href="https://drive.google.com/uc?export=download&id=1Nk5xei92MNnXgsgLAoTTJrXemZLv99OJ"
       download
-      onMouseEnter={(e) => setIsHover(true)}
-      onMouseLeave={(e) => setIsHover(false)}
+      onMouseEnter={() => setIsHover(true)}
+      onMouseLeave={() => setIsHover(false)}
     >
       <motion.div
         animate={{
@@ -25,18 +23,8 @@ const DownloadResumeButton: React.FC<ButtonProps> = ({ className }) => {
         }}
         className="w-1 h-1 rounded-full bg-primary absolute z-10 bottom-0"
       ></motion.div>
-      <motion.div className=" absolute z-10">
-        {" "}
+      <motion.div className="z-10">
         <span>Resume</span>
-      </motion.div>
-      <motion.div className="w-5 h-5 absolute right-3 z-10 top-[12px]">
-        {/* <Image
-          src={"./Icons/DownlodIcon.svg"}
-          width={100}
-          height={100}
-          alt="downloadIcon"
-        /> */}
-        <ArrowDownTrayIcon className=" stroke-1 stroke-black" />
       </motion.div>
     </a>
   );

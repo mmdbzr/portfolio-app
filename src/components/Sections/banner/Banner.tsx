@@ -2,8 +2,9 @@
 import React from "react";
 import { easeInOut, motion } from "framer-motion";
 
-import DownloadResumeButton from "../DownloadResumeButton";
-import PixelBlast from "../shared/PixelBlast";
+import DownloadResumeButton from "../../DownloadResumeButton";
+import PixelBlast from "../../shared/PixelBlast";
+import BlurText from "../../shared/BlurText";
 
 type BannerProps = {
   className?: string;
@@ -64,10 +65,9 @@ const Banner: React.FC<BannerProps> = ({ className }) => {
             className="text-lg text-gray-700 mt-6 max-w-[550px] leading-7 md:text-center md:bg-background/90 rounded-2xl p-2 text-clip"
             variants={itemVariants}
           >
-            Hi! I&apos;m{" "}
-            <span className="text-secondary">Mohammad Bozorgmehr</span>. A
-            dedicated Frontend Developer with 2+ years of experience creating
-            fast, scalable, and user-friendly web applications.
+            <BlurText
+              text={` Hi! Im Mohammad Bozorgmehr. A dedicated Frontend Developer with 2+ years of experience creating fast, scalable, and user-friendly web applications.`}
+            />
           </motion.h2>
 
           <motion.div variants={itemVariants} className="flex justify-center">
