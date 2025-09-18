@@ -11,7 +11,7 @@ export interface props {
   className?: string;
 }
 
-const Skills: React.FC<props> = ({ className }) => {
+const Skills = ({ className }: props) => {
   const sectionRef = useRef<HTMLDivElement>(null);
 
   const { scrollYProgress } = useScroll({
@@ -41,12 +41,11 @@ const Skills: React.FC<props> = ({ className }) => {
 
       <div className="container mt-10">
         <div className="gap-y-40 md:gap-y-60 flex flex-col">
-          {Object.entries(Stack).map(([category, items], index) => (
+          {Object.entries(Stack).map(([category, items]) => (
             <SkillCategory
               key={crypto.randomUUID()}
               category={category}
               items={items}
-              index={index}
             />
           ))}
         </div>

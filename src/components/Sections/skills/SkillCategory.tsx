@@ -2,12 +2,9 @@
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import Image from "next/image";
+import { SkillCategoryProps } from "./type";
 
-const SkillCategory: React.FC<{
-  category: string;
-  items: any;
-  index: number;
-}> = ({ category, items, index }) => {
+const SkillCategory = ({ category, items }: SkillCategoryProps) => {
   const categoryRef = useRef<HTMLDivElement>(null);
   const isInView = useInView(categoryRef, {
     once: false,
@@ -41,7 +38,7 @@ const SkillCategory: React.FC<{
       </motion.p>
 
       <div className="flex gap-x-5 gap-y-7 mt-10  md:mt-0 md:gap-x-11 md:gap-y-9 flex-wrap md:absolute md:left-[42%] md:top-0 text-secondary !font-light flex-row">
-        {Object.values(items).map((item: any, i: number) => (
+        {Object.values(items).map((item, i: number) => (
           <motion.div
             key={crypto.randomUUID()}
             initial={{ opacity: 0, y: 40 }}
