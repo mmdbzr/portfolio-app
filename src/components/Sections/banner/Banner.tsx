@@ -62,11 +62,12 @@ const Banner: React.FC<BannerProps> = ({ className }) => {
           </motion.h1>
 
           <motion.h2
-            className="text-lg text-gray-700 mt-6 max-w-[550px] leading-7 md:text-center md:bg-background/90 rounded-2xl p-2 text-clip"
+            className="text-lg text-gray-700 mt-6 max-w-[550px] leading-7 md:text-center bg-background/80! rounded-2xl p-2 "
             variants={itemVariants}
           >
             <BlurText
               text={` Hi! Im Mohammad Bozorgmehr. A dedicated Frontend Developer with 2+ years of experience creating fast, scalable, and user-friendly web applications.`}
+              className=" md:justify-center! flex! "
             />
           </motion.h2>
 

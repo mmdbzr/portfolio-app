@@ -2,7 +2,7 @@
 @import "tailwindcss";
 
 @theme {
-  --background: #212121;
+  --background: #0a0a0a;
   --color-primary: #00ef50;
   --color-secondary: #dedede;
   --color-gray-700: #b5b5b5;
@@ -17,7 +17,7 @@
 }
 
 body {
-  background: var(--background);
+  background: #0a0a0a;
   color: var(--foreground);
   font-family: "Roboto", sans-serif;
 }
