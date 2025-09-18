@@ -1,5 +1,6 @@
 import AboutMe from "@/components/Sections/about-me/Aboutme";
 import Banner from "@/components/Sections/banner/Banner";
+import Experience from "@/components/Sections/experience/Experience";
 import Skills from "@/components/Sections/skills/Skills";
 
 export default function Home() {
@@ -8,6 +9,7 @@ export default function Home() {
       <Banner />
       <AboutMe />
       <Skills />
+      <Experience />
     </div>
   );
 }

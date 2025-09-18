@@ -36,7 +36,7 @@ const Skills = ({ className }: props) => {
           width={100}
           alt="flower Icon"
         />
-        <p className="text-secondary text-4xl md:text-3xl">My Stack</p>
+        <p className="text-secondary text-4xl md:text-3xl">MY STACK</p>
       </div>
 
       <div className="container mt-10">
