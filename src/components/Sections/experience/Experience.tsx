@@ -4,7 +4,6 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import React, { useRef } from "react";
 import Image from "next/image";
 import { experience } from "@/lib/data/Experiences";
-import { div } from "framer-motion/client";
 import SingleExperienceItem from "./SingleExperienceItem";
 
 const Experience = () => {
@@ -32,7 +31,7 @@ const Experience = () => {
           width={100}
           alt="flower Icon"
         />
-        <p className="text-secondary text-4xl md:text-3xl">MY EXPERIENCES</p>
+        <p className="text-secondary  text-xl md:text-3xl">MY EXPERIENCES</p>
       </div>
 
       <div className="container mt-10">

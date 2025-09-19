@@ -9,4 +9,9 @@ export const experience = [
     role: "Frontend Developer",
     Date: "Nov 2024 - Jul 2025",
   },
+  {
+    company: "Freelance",
+    role: "Frontend Developer (Freelance)",
+    Date: "May 2023 - Nov 2024",
+  },
 ];

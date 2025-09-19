@@ -35,6 +35,10 @@
     "zustand": {
       "name": "zustand",
       "icon": "/Icons/zustand.svg"
+    },
+    "ReactQuery": {
+      "name": "ReactQuery",
+      "icon": "/Icons/react-query.svg"
     }
   },
   "Tools": {
