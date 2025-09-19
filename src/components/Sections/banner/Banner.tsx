@@ -1,14 +1,13 @@
 "use client";
 import React from "react";
 import { easeInOut, motion } from "framer-motion";
-
-import DownloadResumeButton from "../../DownloadResumeButton";
+import DownloadResumeButton from "../../shared/DownloadResumeButton";
 import PixelBlast from "../../shared/PixelBlast";
 import BlurText from "../../shared/BlurText";
 
-type BannerProps = {
+interface BannerProps {
   className?: string;
-};
+}
 
 const containerVariants = {
   hidden: { opacity: 0, y: 50, transition: { duration: 0.8, easeInOut } },
@@ -24,7 +23,7 @@ const itemVariants = {
   },
 };
 
-const Banner: React.FC<BannerProps> = ({ className }) => {
+const Banner = ({ className }: BannerProps) => {
   return (
     <section className={`${className} relative w-full h-screen`}>
       <div className="absolute inset-0 z-0 w-full h-full">

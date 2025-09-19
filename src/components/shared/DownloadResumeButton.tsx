@@ -11,7 +11,7 @@ const DownloadResumeButton = ({ className }: ButtonProps) => {
 
   return (
     <a
-      className={` cursor-pointer h-12 px-8 bg-white flex w-32 justify-center items-center font-Anton relative overflow-clip rounded-3xl  ${className}`}
+      className={` cursor-pointer h-12 px-8 bg-white flex w-32 justify-center items-center font-Roboto font-bold relative overflow-clip rounded-3xl  ${className}`}
       href="https://drive.google.com/uc?export=download&id=1Nk5xei92MNnXgsgLAoTTJrXemZLv99OJ"
       download
       onMouseEnter={() => setIsHover(true)}
