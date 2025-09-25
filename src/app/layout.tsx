@@ -3,6 +3,7 @@ import "./globals.css";
 
 import ClientLayout from "./ClientLayout";
 import Navbar from "@/components/shared/Menu";
+import { Footer } from "@/components/shared/footer";
 
 export default function RootLayout({
   children,
@@ -11,7 +12,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className="h-[2000px]">
+      <body className="">
         <Navbar />
 
         <ClientLayout>{children}</ClientLayout>
@@ -23,6 +24,7 @@ export default function RootLayout({
             mohammad.bzr82@gmail.com
           </a>
         </span>
+        <Footer />
       </body>
     </html>
   );
