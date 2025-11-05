@@ -1,8 +1,15 @@
 import React, { useEffect, useRef } from "react";
 import * as THREE from "three";
 import { EffectComposer, EffectPass, RenderPass, Effect } from "postprocessing";
+import { Pass } from "three/examples/jsm/postprocessing/Pass.js";
 
 type PixelBlastVariant = "square" | "circle" | "triangle" | "diamond";
+
+interface HasEffects {
+  effects: Array<{
+    uniforms?: Map<string, THREE.Uniform>;
+  }>;
+}
 
 type PixelBlastProps = {
   variant?: PixelBlastVariant;
@@ -177,7 +184,6 @@ void main() {
   gl_Position = vec4(position, 1.0);
 }
 `;
-
 const FRAGMENT_SRC = `
 precision highp float;
 
@@ -399,18 +405,26 @@ const PixelBlast: React.FC<PixelBlastProps> = ({
     touch?: ReturnType<typeof createTouchTexture>;
     liquidEffect?: Effect;
   } | null>(null);
-  const prevConfigRef = useRef<any>(null);
+  const prevConfigRef = useRef<PixelBlastProps | null>(null);
   useEffect(() => {
     const container = containerRef.current;
     if (!container) return;
     speedRef.current = speed;
-    const needsReinitKeys = ["antialias", "liquid", "noiseAmount"];
-    const cfg = { antialias, liquid, noiseAmount };
+    const needsReinitKeys: (keyof PixelBlastProps)[] = [
+      "antialias",
+      "liquid",
+      "noiseAmount",
+    ];
+    const cfg: Pick<PixelBlastProps, (typeof needsReinitKeys)[number]> = {
+      antialias,
+      liquid,
+      noiseAmount,
+    };
     let mustReinit = false;
     if (!threeRef.current) mustReinit = true;
     else if (prevConfigRef.current) {
       for (const k of needsReinitKeys)
-        if (prevConfigRef.current[k] !== (cfg as any)[k]) {
+        if (prevConfigRef.current![k] || prevConfigRef.current![k] !== cfg[k]) {
           mustReinit = true;
           break;
         }
@@ -429,18 +443,18 @@ const PixelBlast: React.FC<PixelBlastProps> = ({
         threeRef.current = null;
       }
       const canvas = document.createElement("canvas");
-      const gl = canvas.getContext("webgl2", { antialias, alpha: true });
-      if (!gl) return;
       const renderer = new THREE.WebGLRenderer({
         canvas,
-        context: gl as WebGL2RenderingContext,
         antialias,
         alpha: true,
+        powerPreference: "high-performance",
       });
       renderer.domElement.style.width = "100%";
       renderer.domElement.style.height = "100%";
       renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
       container.appendChild(renderer.domElement);
+      if (transparent) renderer.setClearAlpha(0);
+      else renderer.setClearColor(0x000000, 1);
       const uniforms = {
         uResolution: { value: new THREE.Vector2(0, 0) },
         uTime: { value: 0 },
@@ -470,9 +484,9 @@ const PixelBlast: React.FC<PixelBlastProps> = ({
         fragmentShader: FRAGMENT_SRC,
         uniforms,
         transparent: true,
-        glslVersion: THREE.GLSL3,
         depthTest: false,
         depthWrite: false,
+        glslVersion: THREE.GLSL3,
       });
       const quadGeom = new THREE.PlaneGeometry(2, 2);
       const quad = new THREE.Mesh(quadGeom, material);
@@ -497,10 +511,7 @@ const PixelBlast: React.FC<PixelBlastProps> = ({
       const ro = new ResizeObserver(setSize);
       ro.observe(container);
       const randomFloat = () => {
-        if (
-          typeof window !== "undefined" &&
-          (window as any).crypto?.getRandomValues
-        ) {
+        if (typeof window !== "undefined" && window.crypto?.getRandomValues) {
           const u32 = new Uint32Array(1);
           window.crypto.getRandomValues(u32);
           return u32[0] / 0xffffffff;
@@ -543,7 +554,7 @@ const PixelBlast: React.FC<PixelBlastProps> = ({
         const noisePass = new EffectPass(camera, noiseEffect);
         noisePass.renderToScreen = true;
         if (composer && composer.passes.length > 0)
-          composer.passes.forEach((p) => ((p as any).renderToScreen = false));
+          composer.passes.forEach((p) => (p.renderToScreen = false));
         composer.addPass(noisePass);
       }
       if (composer)
@@ -580,25 +591,23 @@ const PixelBlast: React.FC<PixelBlastProps> = ({
         passive: true,
       });
       let raf = 0;
-      const animate = () => {
+      /*************  ✨ Windsurf Command 🌟  *************/
+      const animate = (): void => {
         if (autoPauseOffscreen && !visibilityRef.current.visible) {
           raf = requestAnimationFrame(animate);
           return;
         }
         uniforms.uTime.value =
           timeOffset + clock.getElapsedTime() * speedRef.current;
-        if (liquidEffect)
-          (liquidEffect as any).uniforms.get("uTime").value =
-            uniforms.uTime.value;
         if (composer) {
           if (touch) touch.update();
           composer.passes.forEach((p) => {
-            const effs = (p as any).effects;
-            if (effs)
-              effs.forEach((eff: any) => {
+            if ("effects" in p) {
+              (p as unknown as Pass & HasEffects).effects.forEach((eff) => {
                 const u = eff.uniforms?.get("uTime");
                 if (u) u.value = uniforms.uTime.value;
               });
+            }
           });
           composer.render();
         } else renderer.render(scene, camera);
@@ -636,12 +645,6 @@ const PixelBlast: React.FC<PixelBlastProps> = ({
       t.uniforms.uEdgeFade.value = edgeFade;
       if (transparent) t.renderer.setClearAlpha(0);
       else t.renderer.setClearColor(0x000000, 1);
-      if (t.liquidEffect) {
-        const uStrength = (t.liquidEffect as any).uniforms.get("uStrength");
-        if (uStrength) uStrength.value = liquidStrength;
-        const uFreq = (t.liquidEffect as any).uniforms.get("uFreq");
-        if (uFreq) uFreq.value = liquidWobbleSpeed;
-      }
       if (t.touch) t.touch.radiusScale = liquidRadius;
     }
     prevConfigRef.current = cfg;

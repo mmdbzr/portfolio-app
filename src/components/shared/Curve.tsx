@@ -1,5 +1,5 @@
 import React from "react";
-import { motion } from "framer-motion";
+import { motion, cubicBezier } from "framer-motion";
 
 export default function Index() {
   const initialPath = `M100 0 L200 0 L200 ${window.innerHeight} L100 ${
@@ -15,23 +15,29 @@ export default function Index() {
     },
     enter: {
       d: targetPath,
-      transition: { duration: 1, ease: [0.76, 0, 0.24, 1] },
+      transition: {
+        duration: 1,
+        ease: cubicBezier(0.76, 0, 0.24, 1),
+      },
     },
-    // exit: {
-    //   d: initialPath,
-    //   transition: { duration: 0.8, ease: [0.76, 0, 0.24, 1] },
-    // },
+    exit: {
+      d: initialPath,
+      transition: {
+        duration: 1,
+        ease: cubicBezier(0.76, 0, 0.24, 1),
+      },
+    },
   };
 
   return (
-    <svg className="absolute top-0 left-[-100px] w-[100px] h-full -z-10 ">
+    <svg className="absolute top-0 left-[-100px] w-[100px] h-full -z-10">
       <motion.path
         variants={curve}
         initial="initial"
         animate="enter"
         exit="exit"
-        className={`fill-[#212121]`}
-      ></motion.path>
+        className="fill-[#212121]"
+      />
     </svg>
   );
 }

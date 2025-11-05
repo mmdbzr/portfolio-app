@@ -58,7 +58,7 @@ const SplashScreen: React.FC<SplashScreenProps> = ({
     };
 
     SplashAnimation();
-  }, []);
+  });
 
   return (
     <div

@@ -7,7 +7,7 @@ export interface NavbarProps {
   className?: string;
 }
 
-const Menu: React.FC<NavbarProps> = ({ className }) => {
+const Menu: React.FC<NavbarProps> = () => {
   const [isActive, setIsActive] = useState(false);
   const [isHover, setIsHover] = useState(false);
 
