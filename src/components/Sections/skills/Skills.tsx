@@ -27,6 +27,7 @@ const Skills = ({ className }: props) => {
       ref={sectionRef}
       style={{ y, opacity }}
       className={cn(className, "px-4 md:px-40 md:mt-40")}
+      id="skills"
     >
       <div className="flex items-center gap-x-4">
         <Image

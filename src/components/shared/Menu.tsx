@@ -11,6 +11,9 @@ const Menu: React.FC<NavbarProps> = () => {
   const [isActive, setIsActive] = useState(false);
   const [isHover, setIsHover] = useState(false);
 
+  const handelClick = () => {
+    setIsActive(!isActive);
+  };
   return (
     <div className="z-30 absolute right-0 top-0 h-screen ">
       <button
@@ -22,7 +25,7 @@ const Menu: React.FC<NavbarProps> = () => {
           setIsHover(false);
         }}
         onClick={() => {
-          setIsActive(!isActive);
+          handelClick();
         }}
       >
         <span
@@ -53,7 +56,7 @@ const Menu: React.FC<NavbarProps> = () => {
                 setIsActive(false);
               }}
             />
-            <Navbar />
+            <Navbar onClick={() => handelClick()} />
           </div>
         )}
       </AnimatePresence>

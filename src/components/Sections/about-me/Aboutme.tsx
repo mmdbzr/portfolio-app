@@ -17,7 +17,7 @@ const AboutMe: React.FC<Props> = ({ className }) => {
   const opacity = useTransform(scrollYProgress, [0, 0.3, 0.7, 1], [0, 1, 1, 0]);
 
   return (
-    <section className={`${className} px-4 md:px-40 md:mt-[270px]`}>
+    <section className={`${className} px-4 md:px-40 md:mt-[270px]`} id="about">
       {" "}
       <motion.div className="container text-secondary" ref={contaionRef}>
         <motion.h2

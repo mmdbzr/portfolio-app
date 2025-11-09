@@ -25,7 +25,7 @@ const itemVariants = {
 
 const Banner = ({ className }: BannerProps) => {
   return (
-    <section className={`${className} relative w-full h-screen`}>
+    <section className={`${className} relative w-full h-screen`} id="home">
       <div className="absolute inset-0 z-0 w-full h-full">
         <PixelBlast
           variant="circle"

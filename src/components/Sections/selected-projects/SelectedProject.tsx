@@ -20,6 +20,7 @@ const SelectedProject = () => {
       ref={sectionRef}
       style={{ y, opacity }}
       className={cn("px-4 md:px-40 md:mt-40 w-full")}
+      id="projects"
     >
       <div className="flex items-center gap-x-4 mb-10 text-[20px]">
         <Image

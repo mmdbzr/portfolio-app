@@ -22,6 +22,7 @@ const Experience = () => {
       ref={sectionRef}
       style={{ y, opacity }}
       className={cn("px-4 md:px-40 md:mt-40")}
+      id="experience"
     >
       <div className="flex items-center gap-x-4">
         <Image
@@ -35,7 +36,7 @@ const Experience = () => {
       </div>
 
       <div className="container mt-10">
-        <div className="gap-y-40 md:gap-y-12 flex flex-col">
+        <div className="gap-y-12 flex flex-col">
           {experience.map((item) => (
             <SingleExperienceItem key={crypto.randomUUID()} item={item} />
           ))}

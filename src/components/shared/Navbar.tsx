@@ -4,6 +4,7 @@ import Curve from "./Curve";
 
 export interface NavbarProps {
   className?: string;
+  onClick?: () => void;
 }
 
 const menuSlide = {
@@ -18,7 +19,7 @@ const menuSlide = {
   },
 };
 
-const Navbar: React.FC<NavbarProps> = ({ className }) => {
+const Navbar: React.FC<NavbarProps> = ({ className, onClick }) => {
   return (
     <motion.div
       className={`${className} fixed top-0 right-0 h-screen flex flex-col items-center justify-center bg-[#212121] `}
@@ -27,9 +28,22 @@ const Navbar: React.FC<NavbarProps> = ({ className }) => {
       animate="enter"
       exit="exit"
     >
-      <div className="p-[200px] h-full bg-inherit">
-        Navbar
-        <div></div>
+      <div className="p-[50px] md:p-[200px] h-full bg-inherit flex flex-col items-start text-4xl md:text-6xl font-Anton text-gray-700 gap-y-4">
+        <a href="#home" onClick={onClick}>
+          Home
+        </a>
+        <a href="#about" onClick={onClick}>
+          About Me
+        </a>
+        <a href="#skills" onClick={onClick}>
+          Skills
+        </a>
+        <a href="#experience" onClick={onClick}>
+          Experience
+        </a>
+        <a href="#projects" onClick={onClick}>
+          Projects
+        </a>
       </div>
       <Curve />
     </motion.div>
