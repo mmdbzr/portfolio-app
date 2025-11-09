@@ -57,7 +57,7 @@ const SingleProject = ({
               delay: 0.05,
             }}
           >
-            {projectName}
+            <a href={projectSrc}> {projectName}</a>
           </motion.h1>
           <motion.h2
             className="text-lg font-light font-Roboto text-gray-700 "
