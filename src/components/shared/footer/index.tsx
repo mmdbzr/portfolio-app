@@ -1,8 +1,7 @@
 "use client";
 import React from "react";
 import Image from "next/image";
-import PixelBlast from "../PixelBlast";
-import { relative } from "path";
+import Link from "next/link";
 
 export const Footer = () => {
   return (
@@ -16,7 +15,10 @@ export const Footer = () => {
           mohammad.bzr82@gmail.com
         </a>
         <div className="flex gap-x-4 items-center">
-          <a href="https://www.linkedin.com/in/mohammad-bozorgmehr">
+          <Link
+            href="https://www.linkedin.com/in/mohammad-bozorgmehr"
+            target="_blank"
+          >
             <Image
               src="/Icons/linkedin.svg"
               height={24}
@@ -24,8 +26,8 @@ export const Footer = () => {
               className="object-cover"
               alt="linkedin"
             />
-          </a>
-          <a href="https://t.me/mmdbzr82">
+          </Link>
+          <Link href="https://t.me/mmdbzr82" target="_blank">
             <Image
               src="/Icons/telegram.svg"
               height={24}
@@ -33,7 +35,16 @@ export const Footer = () => {
               className="object-cover"
               alt="telegram"
             />
-          </a>
+          </Link>
+          <Link href="https://github.com/mmdbzr" target="_blank">
+            <Image
+              src="/Icons/github-142-svgrepo-com.svg"
+              height={24}
+              width={24}
+              className="object-cover"
+              alt="telegram"
+            />
+          </Link>
         </div>
       </div>
     </div>
