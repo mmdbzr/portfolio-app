@@ -4,6 +4,7 @@ import TiltedCard from "../tilted-card/TiltedCard";
 import { SingleProjectProps } from "./type";
 import { cn } from "@/lib/utils";
 import { motion, useInView } from "framer-motion";
+import Link from "next/link";
 
 const SingleProject = ({
   className,
@@ -57,7 +58,9 @@ const SingleProject = ({
               delay: 0.05,
             }}
           >
-            <a href={projectSrc}> {projectName}</a>
+            <Link href={projectSrc} target="_blank">
+              {projectName}
+            </Link>
           </motion.h1>
           <motion.h2
             className="text-lg font-light font-Roboto text-gray-700 "
