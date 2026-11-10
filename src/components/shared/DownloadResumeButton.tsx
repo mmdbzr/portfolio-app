@@ -23,7 +23,7 @@ const DownloadResumeButton = ({ className }: ButtonProps) => {
         }}
         className="w-1 h-1 rounded-full bg-primary absolute z-10 bottom-0"
       ></motion.div>
-      <motion.div className="z-10">
+      <motion.div className="z-10 text-black">
         <span>Resume</span>
       </motion.div>
     </a>
