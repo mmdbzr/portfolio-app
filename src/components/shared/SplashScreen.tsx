@@ -1,91 +1,66 @@
 "use client";
 import React, { useEffect } from "react";
-import { useAnimate } from "framer-motion";
+import { useAnimate, stagger } from "framer-motion";
+
 export interface SplashScreenProps {
   className?: string;
   onComplete?: () => void;
 }
 
+const FIRST_NAME = "MOHAMMAD";
+const BARS = 10;
+
 const SplashScreen: React.FC<SplashScreenProps> = ({
-  className,
+  className = "",
   onComplete,
 }) => {
-  const [textScope, animateText] = useAnimate();
-  const [spanScope, animateSpans] = useAnimate();
-  const firstName = "MOHAMMAD";
+  const [scope, animate] = useAnimate();
 
   useEffect(() => {
-    const SplashAnimation = async () => {
-      const chars = textScope.current?.querySelectorAll("p") || [];
-      const spans = spanScope.current?.querySelectorAll("span") || [];
+    let cancelled = false;
 
-      for (let i = 0; i < chars.length; i++) {
-        await animateText(
-          chars[i],
-          { opacity: 1, y: -10 },
-          {
-            duration: 0.08,
-            ease: "easeInOut",
-          }
-        );
-      }
+    const run = async () => {
+      await animate(
+        "p",
+        { opacity: 1, y: -10 },
+        { duration: 0.2, delay: stagger(0.05) },
+      );
 
-      for (let i = 0; i < spans.length; i++) {
-        animateSpans(
-          spans[i],
-          { opacity: 0, y: 1000 },
-          {
-            delay: i * 0.2,
-            duration: 0.6,
-            ease: "easeInOut",
-          }
-        );
-      }
+      await Promise.all([
+        animate("p", { opacity: 0 }, { duration: 0.3 }),
+        animate(
+          "span",
+          { y: "100%" },
+          { duration: 0.5, ease: "easeInOut", delay: stagger(0.05) },
+        ),
+      ]);
 
-      for (let i = 0; i < chars.length; i++) {
-        animateText(
-          chars[i],
-          { opacity: 0 },
-          {
-            duration: 2,
-            ease: "easeInOut",
-          }
-        );
-      }
-      setTimeout(() => {
-        onComplete?.();
-      }, 2000);
+      if (!cancelled) onComplete?.();
     };
 
-    SplashAnimation();
-  });
+    run();
+    return () => {
+      cancelled = true;
+    };
+  }, []);
 
   return (
     <div
-      className={`flex items-center justify-center w-full min-h-[100vh] h-full ${className}`}
+      ref={scope}
+      aria-hidden="true"
+      className={`fixed inset-0 z-[100] flex items-center justify-center ${className}`}
     >
-      {/* Text */}
-      <div
-        className="absolute top-[50%] flex text-5xl md:text-[100px] font-bold text-white"
-        ref={textScope}
-      >
-        {firstName.split("").map((char) => (
-          <p key={crypto.randomUUID()} className="opacity-0">
+      <div className="absolute top-[50%] flex text-5xl md:text-[100px] font-bold text-white">
+        {FIRST_NAME.split("").map((char, i) => (
+          <p key={i} className="opacity-0">
             {char}
           </p>
         ))}
       </div>
 
-      {/* Background spans */}
-      <div
-        className="grid grid-cols-10 min-w-full min-h-full absolute -z-10"
-        ref={spanScope}
-      >
-        {[...Array(10)].map((_) => (
-          <span
-            key={crypto.randomUUID()}
-            className="w-full h-full bg-black"
-          ></span>
+      <div className="grid grid-cols-10 w-full h-full absolute -z-10">
+        {Array.from({ length: BARS }).map((_, i) => (
+          <span key={i} className="w-full h-full bg-black" />
         ))}
       </div>
     </div>
